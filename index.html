@@ -108,7 +108,8 @@
     .then((userCredential) => {
         // Signed in 
         var user = userCredential.user;
-        alert('Sign in successful!');
+        // alert('Sign in successful!');
+        window.location.assign('mainScreen.html');
     })
     .catch((error) => {
         alert("Your email or password is incorrect. Please try again !");
