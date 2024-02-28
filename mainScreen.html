@@ -30,14 +30,17 @@
             <div class="container">
                 <h1>Exam list</h1>
                 <div class="filters">
-                    <input type="text" id="search" placeholder="Tìm kiếm...">
+                    <input type="text" id="search" placeholder="Search...">
                     <select id="status-filter">
-                    <option value="all">Tất cả trạng thái</option>
-                    <option value="free-access">Truy cập tự do</option>
-                    <option value="scheduled">Đã lên lịch</option>
+                      <option value="all">Tất cả trạng thái</option>
+                      <option value="free-access">Truy cập tự do</option>
+                      <option value="scheduled">Đã lên lịch</option>
                 <!-- Thêm các tùy chọn khác nếu cần -->
-            </select>
+                    </select>
                 </div>
+                <ul id="exam-list">
+                    <!-- Danh sách các kỳ thi sẽ được tạo bằng JavaScript -->
+                </ul>
             </div>
         </div>
 
@@ -47,7 +50,54 @@
     </div>
 
     <script>
-       
+       const exams = [
+    { name: "Practice", status: "free-access" },
+    { name: "Mid-term", status: "scheduled" },
+    { name: "Final", status: "scheduled" },
+    // Thêm các kỳ thi khác nếu cần
+];
+
+// Hiển thị danh sách các kỳ thi
+function displayExams(examsToShow) {
+    const examList = document.getElementById("exam-list");
+    examList.innerHTML = "";
+    examsToShow.forEach(exam => {
+        const listItem = document.createElement("li");
+        listItem.textContent = exam.name + " - " + exam.status;
+        examList.appendChild(listItem);
+    });
+}
+
+// Lọc danh sách kỳ thi theo trạng thái
+function filterExams(status) {
+    const filteredExams = (status === "all") ? exams : exams.filter(exam => exam.status === status);
+    displayExams(filteredExams);
+}
+
+// Tìm kiếm kỳ thi theo tên
+function searchExams(keyword) {
+    const filteredExams = exams.filter(exam => exam.name.toLowerCase().includes(keyword.toLowerCase()));
+    displayExams(filteredExams);
+}
+
+// Sự kiện khi trang được tải
+document.addEventListener("DOMContentLoaded", () => {
+    displayExams(exams); // Hiển thị danh sách kỳ thi khi trang được tải
+
+    // Lắng nghe sự kiện lọc
+    const statusFilter = document.getElementById("status-filter");
+    statusFilter.addEventListener("change", () => {
+        const selectedStatus = statusFilter.value;
+        filterExams(selectedStatus);
+    });
+
+    // Lắng nghe sự kiện tìm kiếm
+    const searchInput = document.getElementById("search");
+    searchInput.addEventListener("input", () => {
+        const keyword = searchInput.value;
+        searchExams(keyword);
+    });
+});
     </script>
     
 
