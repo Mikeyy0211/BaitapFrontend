@@ -13,16 +13,7 @@
         <div id="header">
             <ul id="nav">
                 <li><a href="#">Home</a></li>
-                <li>
-                    <a href="#">Exam
-                        <i class="nav-arrow-down ti-angle-down"></i>
-                    </a>
-                    <ul class="subnav">
-                        <li><a href="" id="practice">Practice</a></li>
-                        <li><a href="" id="midterm">Mid-term</a></li>
-                        <li><a href="" id="final">Final</a></li>
-                    </ul>
-                </li>
+                <li><a href="#content">Exam</a></li>
                 <li><a href="#">Ranking</a></li>
                 <li><a href="#">Guide</a></li>
             </ul>
@@ -35,76 +26,28 @@
 
         </div>
 
-        <div id="content">
-    
+        <div id="content" class="section-content">
+            <div class="container">
+                <h1>Exam list</h1>
+                <div class="filters">
+                    <input type="text" id="search" placeholder="Tìm kiếm...">
+                    <select id="status-filter">
+                    <option value="all">Tất cả trạng thái</option>
+                    <option value="free-access">Truy cập tự do</option>
+                    <option value="scheduled">Đã lên lịch</option>
+                <!-- Thêm các tùy chọn khác nếu cần -->
+            </select>
+                </div>
+            </div>
         </div>
 
         <div id="footer">
 
         </div>
-
-        <!-- Modal -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>The exam is not open.</p>
-            </div>
-        </div>
-
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const checkDate = () => {
-        const today = new Date();
-        const openDate = new Date(today.getFullYear(), 1, 27); // February 27th, month is 0-indexed
-        const closeDate = new Date(today.getFullYear(), 1, 27);
-
-        return today.setHours(0,0,0,0) === openDate.setHours(0,0,0,0);
-    };
-
-    const showModal = () => {
-        const modal = document.getElementById('myModal');
-        modal.style.display = "block";
-    };
-
-    const closeModal = () => {
-        const modal = document.getElementById('myModal');
-        modal.style.display = "none";
-    };
-
-    document.getElementById('midterm').addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!checkDate()) {
-            showModal();
-        } else {
-            alert('Welcome to the Mid-term exam.');
-        }
-    });
-
-    document.getElementById('final').addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!checkDate()) {
-            showModal();
-        } else {
-            alert('Welcome to the Final exam.');
-        }
-    });
-
-    // Close the modal when the user clicks on <span> (x)
-    document.querySelector('.close').addEventListener('click', () => {
-        closeModal();
-    });
-
-    // Close the modal if the user clicks anywhere outside of it
-    window.onclick = function(event) {
-        const modal = document.getElementById('myModal');
-        if (event.target == modal) {
-            closeModal();
-        }
-    };
-});
-
+       
     </script>
     
 
