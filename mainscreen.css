@@ -148,6 +148,7 @@ html {
 
 #content .container li:hover{
     background-color: #e31920;
+    cursor: pointer;
 }
 #footer{
 
