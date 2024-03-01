@@ -98,15 +98,57 @@ html {
 }
 
 #slider{
-   margin-top: 46px;
-   padding-top: 50%;
-   
+    background: url(./image/vuhoanglon.png) top center / cover no-repeat;
+    margin-top: 46.5px;
+    padding-top: 50%;
 }
 
 #content{
-
+    background-color: #ffffff;
+    margin-top: 46.5px;
 }
 
+.section{
+    padding: 20px;
+    margin-top: 50px;
+}
+
+#content .container{
+    max-width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#content .container h1{
+    text-align: center;
+    color: #bb2019;
+    margin-bottom: 20px;
+}
+
+#content .container .filters{
+    margin-bottom: 20px;
+}
+
+#search, #status-filter{
+    margin-right: 10px;
+    padding: 10px;
+}
+
+#content .container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#content .container li {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+#content .container li:hover{
+    background-color: #e31920;
+}
 #footer{
 
 }
