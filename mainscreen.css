@@ -150,6 +150,11 @@ html {
     background-color: #e31920;
     cursor: pointer;
 }
+
+#content .container li a {
+    text-decoration: none;
+    color: #000000;
+}
 #footer{
 
 }

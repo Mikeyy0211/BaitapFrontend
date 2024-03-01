@@ -49,10 +49,10 @@
     </div>
 
     <script>
-       const exams = [
-    { name: "Practice", status: "free-access" },
-    { name: "Mid-term", status: "scheduled" },
-    { name: "Final", status: "scheduled" },
+    const exams = [
+      { name: "Practice", status: "free-access"},
+      { name: "Mid-term", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00"},
+      { name: "Final", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
     // Thêm các kỳ thi khác nếu cần
 ];
 
@@ -62,9 +62,31 @@ function displayExams(examsToShow) {
     examList.innerHTML = "";
     examsToShow.forEach(exam => {
         const listItem = document.createElement("li");
-        listItem.textContent = exam.name + " - " + exam.status;
+        let examLink = document.createElement("a");
+        examLink.textContent = exam.name + " - " + exam.status;
+        if(exam.name === 'Practice'){
+            examLink.href = "quiz02.html?exam=Practice";
+        }else{
+            examLink.href="#";
+            examLink.onclick = function(e){
+                e.preventDefault();
+                if(examDate(exam.startTime, exam.endTime)){
+                    window.location.href = "quiz02.html?exam=" + exam.name;
+                }else{
+                    window.location.href = "https://www.facebook.com/vuhoang.le.338"
+                }
+            }
+        }
+        listItem.appendChild(examLink);
         examList.appendChild(listItem);
     });
+}
+
+function examDate(startTime, endTime){
+    const now = new Date();
+    const start = new Date(startTime);
+    const end = new Date(endTime);
+    return now >=start && now <= end;
 }
 
 // Lọc danh sách kỳ thi theo trạng thái
