@@ -15,9 +15,13 @@
             justify-content: space-between;
             align-items: center;
         }
+        .title {
+            margin-top: 0;
+            font-size: 30px;
+        }
         #timer {
             font-size: 15px;
-            margin-top: -10px;
+            margin-top: -15px;
         }
         body {
             font-family: Arial, sans-serif;
@@ -27,12 +31,39 @@
         .quiz-container{
             width: 80%;
             margin: 0 auto;
+            margin-top: 0;
         }
         h1 {
             text-align: center;
         }
-        .question{
-            width: 45%;
+        .question1{
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+        .question2{
+            position: absolute;
+            top: 300px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+        .question3{
+            position: absolute;
+            top: 600px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+        .question4{
+            position: absolute;
+            top: 900px;
+            width: 100%;
             margin-bottom: 20px;
             background-color: #fff;
             padding: 20px;
@@ -57,6 +88,9 @@
         }
 
         .submit-btn {
+            position: absolute;
+            top: 1400px;
+            left: 650px;
             display:block;
             margin: 20px auto;
             padding: 10px 20px;
@@ -69,10 +103,12 @@
         }
         
         .result {
+            position: absolute;
+            top: 1450px;
             font-weight: bold;
             font-size: 22px;
             margin-top: 20px;
-            padding: 10px;
+            padding: 20px;
             background-color: #f2f2f2;
             border-radius: 5px;
             text-align: center;
@@ -82,12 +118,17 @@
             display:flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+        }
+        .quiz-container hr {
+            width: 104.5%;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Quiz App</h1>
+        <h1 class="title">Quiz App</h1>
         <div class="quiz-container">
             <div id="timer"></div>
         </div>
@@ -99,7 +140,7 @@
         <hr>
         <form id="quiz-form">
             <div class="d-flex">
-                <div class="question">
+                <div class="question1">
                     <p>1. What is the capital of France?</p>
                     <div class="answers">
                         <label>
@@ -118,82 +159,81 @@
                             <input type="radio" name="q1" value="d">
                             Rome
                         </label>
-                        </div>
                     </div>
-                    
-                    <div class="question">
-                        <p>2. What is the largest planet in our solar system?</p>
-                        <div class="answers">
-                            <label>
-                                <input type="radio" name="q2" value="a">
-                                Venus
-                            </label>
-                            <label>
-                                <input type="radio" name="q2" value="b">
-                                Mars
-                            </label>
-                            <label>
-                                <input type="radio" name="q2" value="c">
-                                Jupiter
-                            </label>
-                            <label>
-                                <input type="radio" name="q2" value="d">
-                                Saturn
-                            </label>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="question">
-                            <p>3. What is the capital city of England?</p>
-                            <div class="answers">
-                                <label>
-                                    <input type="radio" name="q3" value="a">
-                                    London
-                                </label>
-                                <label>
-                                    <input type="radio" name="q3" value="b">
-                                    Paris
-                                </label>
-                                <label>
-                                    <input type="radio" name="q3" value="c">
-                                    Hanoi
-                                </label>
-                                <label>
-                                    <input type="radio" name="q3" value="d">
-                                    Tokyo
-                                </label>
-                            </div>
-                    </div>                                       
-                    
-                        <div class="question">
-                            <p>4. What is the largest ocean on Earth?</p>
-                            <div class="answers">
-                                <label>
-                                    <input type="radio" name="q4" value="a">
-                                    Pacific Ocean
-                                </label>
-                                <label>
-                                    <input type="radio" name="q4" value="b">
-                                    Atlantic Ocean
-                                </label>
-                                <label>
-                                    <input type="radio" name="q4" value="c">
-                                    Indian Ocean
-                                </label>
-                                <label>
-                                    <input type="radio" name="q4" value="d">
-                                    Arctic Ocean
-                                </label>
-                            </div>
-                        </div>
-                    
                 </div>
-                <button type="submit" class="submit-btn">Submit</button>
-                </form>
-                <div class="result" id="result"></div>
+                    
+                <div class="question2">
+                    <p>2. What is the largest planet in our solar system?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q2" value="a">
+                            Venus
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="b">
+                            Mars
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="c">
+                            Jupiter
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="d">
+                            Saturn
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question3">
+                    <p>3. What is the capital city of England?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q3" value="a">
+                            London
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="b">
+                            Paris
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="c">
+                            Hanoi
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="d">
+                            Tokyo
+                        </label>
+                    </div>
+                </div>                                       
+                    
+                <div class="question4">
+                    <p>4. What is the largest ocean on Earth?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q4" value="a">
+                            Pacific Ocean
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="b">
+                            Atlantic Ocean
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="c">
+                            Indian Ocean
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="d">
+                            Arctic Ocean
+                        </label>
+                    </div>
+
+                </div>
             </div>
+            <button type="submit" class="submit-btn">Submit</button>
+            <div class="result" id="result"></div>
         </form>
+                
+        </div>
     </div>
 
     <script type="text/javascript">
