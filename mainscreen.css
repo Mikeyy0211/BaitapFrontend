@@ -86,6 +86,15 @@ html {
     cursor: pointer;
 }
 
+#header h1{
+    color: #ffffff;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
 #header .search-btn:hover {
     background-color: red;
 }

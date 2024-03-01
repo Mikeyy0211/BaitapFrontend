@@ -11,21 +11,17 @@
     
     <div id="main">
         <div id="header">
-            <ul id="nav">
-                <li><a href="#">Home</a></li>
+            <!-- <ul id="nav">
                 <li><a href="#content">Exam</a></li>
                 <li><a href="#">Ranking</a></li>
                 <li><a href="#">Guide</a></li>
-            </ul>
+            </ul> -->
             <!-- <div class="search-btn">
                 <i class="search-icon ti-search"></i>
             </div> -->
+            <h1>Welcome</h1>
         </div>
         
-        <div id="slider">
-            
-        </div>
-
         <div id="content" class="section">
             <div class="container">
                 <h1>Exam list</h1>
@@ -119,6 +115,13 @@ document.addEventListener("DOMContentLoaded", () => {
         searchExams(keyword);
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const userName = localStorage.getItem('userName');
+    if(userName){
+        const welcomeHeading = document.querySelector('#header h1');
+        welcomeHeading.textContent += ` ${userName}`;
+    }
+})
     </script>
     
 
