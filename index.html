@@ -110,7 +110,9 @@
             e.preventDefault();
             const email = document.getElementById('signin-email').value;
             const password = document.getElementById('signin-password').value;
-
+            if(email === 'admin@admin.com' && password === 'admin'){
+                window.location.assign('adminDashboard.html')
+            }else{
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
@@ -121,6 +123,7 @@
                 .catch((error) => {
                     alert("Your email or password is incorrect. Please try again !");
                 });
+            }
         });
     </script>
 </body>
