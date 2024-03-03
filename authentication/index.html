@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <title>Login Page</title>
 </head>
 
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -96,7 +96,7 @@
                     })
                         .then(() => {
                             localStorage.setItem('userName', name);
-                            window.location.assign('mainScreen.html');
+                            window.location.replace('./index.html')
                         })
                 })
                 .catch((error) => {
@@ -112,14 +112,14 @@
             const password = document.getElementById('signin-password').value;
             if(email === 'admin@admin.com' && password === 'admin'){
                 localStorage.setItem('userName', 'admin');
-                window.location.assign('adminDashboard.html');
+                window.location.assign('../admin/adminDashboard.html');
             }else{
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
                     const name = user.displayName;
                     localStorage.setItem('userName', name);
-                    window.location.assign('mainScreen.html');
+                    window.location.assign('../mainScreen/mainScreen.html');
                 })
                 .catch((error) => {
                     alert("Your email or password is incorrect. Please try again !");

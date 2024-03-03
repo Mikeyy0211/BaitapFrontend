@@ -1,51 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="mainscreen.css">
-    <link rel="stylesheet" href="assets/themify-icons/themify-icons.css">
-</head>
-
-<body>
-
-    <div id="main">
-        <div id="header">
-            <h1 id="userNameDisplay"></h1>
-        </div>
-
-        <div id="content" class="section">
-            <div class="container">
-                <h1>Exam list</h1>
-                <div class="filters">
-                    <input type="text" id="search" placeholder="Search...">
-                    <select id="status-filter">
-                        <option value="all">All status</option>
-                        <option value="free-access">Free access</option>
-                        <option value="scheduled">Scheduled</option>
-                    </select>
-                </div>
-                <ul id="exam-list">
-
-                </ul>
-            </div>
-        </div>
-
-        <div id="footer">
-
-        </div>
-    </div>
-
-    <script>
+let count = 0;
         const exams = [
-            { name: "Practice", status: "free-access" },
-            { name: "Mid-term", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
-            { name: "Final", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
+            { name: "Practice 1", status: "free-access" },
+            { name: "Mid-term grade 1", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
+            { name: "Final-term grade 1", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
             // Thêm các kỳ thi khác nếu cần
         ];
-
+        for(let i = 2; i<=12;i++){
+            exams.push({name: `Practice ${i}`, status: 'free-access'});
+        }
+        for(let i = 2; i<=12;i++){
+            exams.push({name: `Mid-term grade ${i}`, status: 'scheduled', startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00"});
+        }
+        for(let i = 2; i<=12;i++){
+            exams.push({name: `Final-term grade ${i}`, status: 'scheduled', startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00"});
+        }
         // Hiển thị danh sách các kỳ thi
         function displayExams(examsToShow) {
             const examList = document.getElementById("exam-list");
@@ -117,16 +85,11 @@
             }
         })
         window.onload = function () {
-            const userName = localStorage.getItem('userName');
+            const user = localStorage.getItem('userName');
+            const userName = user.toUpperCase();
             if (userName) {
                 document.getElementById('userNameDisplay').textContent = `Welcome, ${userName}`;
             } else {
                 document.getElementById('userNameDisplay').textContent = `Welcome`;
             }
         }
-    </script>
-
-
-</body>
-
-</html>

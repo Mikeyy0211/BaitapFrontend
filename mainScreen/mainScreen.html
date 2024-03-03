@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mainscreen.css">
+    <link rel="stylesheet" href="assets/themify-icons/themify-icons.css">
+</head>
+
+<body>
+
+    <div id="main">
+        <div id="header">
+            <h1 id="userNameDisplay"></h1>
+            <div id="logout">
+            <button id="logout-btn">Log Out</button>
+        </div>
+        </div>
+
+        <div id="content" class="section">
+            <div class="container">
+                <h1>Exam list</h1>
+                <div class="filters">
+                    <input type="text" id="search" placeholder="Search...">
+                    <select id="status-filter">
+                        <option value="all">All status</option>
+                        <option value="free-access">Free access</option>
+                        <option value="scheduled">Scheduled</option>
+                    </select>
+                </div>
+                <ul id="exam-list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="./test.js">
+        
+    </script>
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDnCI0FHi1KPMHJ9iygNhvq-Di2nuFefI",
+            authDomain: "multiple-choice-6316a.firebaseapp.com",
+            projectId: "multiple-choice-6316a",
+            storageBucket: "multiple-choice-6316a.appspot.com",
+            messagingSenderId: "426572707359",
+            appId: "1:426572707359:web:d59db27332941b8e21872a"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.href = '../authentication/index.html';
+            }).catch((error) => {
+                console.error("Error signing out:", error);
+            });
+        });
+    </script>
+    
+
+</body>
+
+</html>
