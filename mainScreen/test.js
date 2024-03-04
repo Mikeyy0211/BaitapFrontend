@@ -5,13 +5,13 @@ let count = 0;
             { name: "Final-term grade 1", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
             // Thêm các kỳ thi khác nếu cần
         ];
-        for(let i = 2; i<=12;i++){
+        for(let i = 2; i<=5;i++){
             exams.push({name: `Practice ${i}`, status: 'free-access'});
         }
-        for(let i = 2; i<=12;i++){
+        for(let i = 2; i<=5;i++){
             exams.push({name: `Mid-term grade ${i}`, status: 'scheduled', startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00"});
         }
-        for(let i = 2; i<=12;i++){
+        for(let i = 2; i<=5;i++){
             exams.push({name: `Final-term grade ${i}`, status: 'scheduled', startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00"});
         }
         // Hiển thị danh sách các kỳ thi
@@ -22,9 +22,14 @@ let count = 0;
                 const listItem = document.createElement("li");
                 let examLink = document.createElement("a");
                 examLink.textContent = exam.name + " - " + exam.status;
-                if (exam.name === 'Practice') {
-                    examLink.href = "quiz02.html?exam=Practice";
-                } else {
+                if (exam.status === 'free-access' && exam.name.startsWith("Practice")) {
+                    const examNumber = exam.name.split(" ")[1];
+                    if (examNumber) {
+                        examLink.href = `../quiz/quiz${examNumber}.html?exam=Practice${examNumber}`;
+                    } else {
+                        examLink.href = "../quiz/quiz2.html?exam=Practice";
+                    }
+                } else if(exam.status != 'free-access') {
                     examLink.href = "#";
                     examLink.onclick = function (e) {
                         e.preventDefault();
