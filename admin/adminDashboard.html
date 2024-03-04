@@ -1,131 +1,298 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+         Admin
+    </title>
     <link rel="stylesheet" href="mainscreen.css">
-    <link rel="stylesheet" href="assets/themify-icons/themify-icons.css">
+    <link rel="shortcut icon" href="/images/logo-mb.png" type="image/png">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="/admin/grid.css">
+    <link rel="stylesheet" href="/admin/app.css">
 </head>
 
 <body>
 
-    <div id="main">
-        <div id="header">
-            <h1 id="userNameDisplay"></h1>
-        </div>
-
-        <div id="content" class="section">
-            <div class="container">
-                <h1>Exam list</h1>
-                <div class="filters">
-                    <input type="text" id="search" placeholder="Search...">
-                    <select id="status-filter">
-                        <option value="all">All status</option>
-                        <option value="free-access">Free access</option>
-                        <option value="scheduled">Scheduled</option>
-                    </select>
-                </div>
-                <ul id="exam-list">
-
-                </ul>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="/image/logoptit.png" alt="Comapny logo">
+            <div class="sidebar-close" id="sidebar-close">
+                <i class='bx bx-left-arrow-alt'></i>
             </div>
         </div>
+        <div class="sidebar-user">
+            <div class="sidebar-user-info">
+                <img src="/image/vuhoangbe.png" alt="User picture" class="profile-image">
+                <div class="sidebar-user-name">
+                    vu hoang
+                </div>
+            </div>
+            <button class="btn btn-outline">
+                <i class='bx bx-log-out bx-flip-horizontal'></i>
+            </button>
+        </div>
+        <!-- SIDEBAR MENU -->
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#" class="active">
+                    <i class='bx bx-home'></i>
+                    <span>dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-user-circle'></i>
+                    <span>Users</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#">
+                            Add users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Edit user info
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Delete user
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-category'></i>
+                    <span>Practices</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#">
+                            list
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            add practice
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-cog'></i>
+                    <span>settings</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                            darkmode
+                            <span class="darkmode-switch"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+    <!-- END SIDEBAR -->
 
-        <div id="footer">
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class='bx bx-menu-alt-right'></i>
+            </div>
+            <div class="main-title">
+                Hello Admin dzai
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- COUNTER -->
+                        <div class="counter">
+                            <div class="counter-title">
+                                total submission
+                            </div>
+                            <div class="counter-info">
+                                <div class="counter-count">
+                                    6578
+                                </div>
+                                <i class='bx bx-edit-alt'></i>
+                            </div>
+                        </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- COUNTER -->
+                        <div class="counter">
+                            <div class="counter-title">
+                                completion rate
+                            </div>
+                            <div class="counter-info">
+                                <div class="counter-count">
+                                    80.5%
+                                </div>
+                                <i class='bx bx-line-chart'></i>
+                            </div>
+                        </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- COUNTER -->
+                        <div class="counter">
+                            <div class="counter-title">
+                                average score
+                            </div>
+                            <div class="counter-info">
+                                <div class="counter-count">
+                                    7,89
+                                </div>
+                                <i class='bx bx-bar-chart'></i>
+                            </div>
+                        </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- COUNTER -->
+                        <div class="counter">
+                            <div class="counter-title">
+                                daily visitors
+                            </div>
+                            <div class="counter-info">
+                                <div class="counter-count">
+                                    120
+                                </div>
+                                <i class='bx bx-user'></i>
+                            </div>
+                        </div>
+                        <!-- END COUNTER -->
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <!-- TOP PRODUCT -->
+                    <div class="box f-height">
+                        <div class="box-header">
+                            top student
+                        </div>
+                        <div class="box-body">
+                            <ul class="product-list">
+                                <li class="product-list-item">
+                                    <div class="item-info">
+                                        <img src="/image/vuhoangdzai.jpg" alt="product image">
+                                        <div class="item-name">
+                                            <div class="product-name">Vu Hoang</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-sale-info">
+                                        <div class="text-second">Score</div>
+                                        <div class="product-sales">10</div>
+                                    </div>
+                                </li>
+                                <li class="product-list-item">
+                                    <div class="item-info">
+                                        <img src="/image/ngoclong.png" alt="product image">
+                                        <div class="item-name">
+                                            <div class="product-name">ngoc long</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-sale-info">
+                                        <div class="text-second">Score</div>
+                                        <div class="product-sales">9,5</div>
+                                    </div>
+                                </li>
+                                <li class="product-list-item">
+                                    <div class="item-info">
+                                        <img src="/image/tuanminh.png" alt="product image">
+                                        <div class="item-name">
+                                            <div class="product-name">tuan minh</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-sale-info">
+                                        <div class="text-second">Score</div>
+                                        <div class="product-sales">9,5</div>
+                                    </div>
+                                </li>
+                                <li class="product-list-item">
+                                    <div class="item-info">
+                                        <img src="/image/hero-bg.png" alt="product image">
+                                        <div class="item-name">
+                                            <div class="product-name">Ba duong</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-sale-info">
+                                        <div class="text-second">Score</div>
+                                        <div class="product-sales">2</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- TOP PRODUCT -->
+                </div>
+                <div class="col-4 col-md-6 col-sm-12">
+                    <!-- CATEGORY CHART -->
+                    <div class="box f-height">
+                        <div class="box-body">
+                            <div id="category-chart"></div>
+                        </div>
+                    </div>
+                    <!-- END CATEGORY CHART -->
+                </div>
+                <div class="col-5 col-md-12 col-sm-12">
+                    <!-- CUSTOMERS CHART -->
+                    <div class="box f-height">
+                        <div class="box-header">
+                            new registers
+                        </div>
+                        <div class="box-body">
+                            <div id="customer-chart"></div>
+                        </div>
+                    </div>
+                    <!-- END CUSTOMERS CHART -->
+                </div>
+                
+                    <!-- END ORDERS TABLE -->
+                </div>
+            </div>
         </div>
     </div>
+    <!-- END MAIN CONTENT -->
 
-    <script>
-        const exams = [
-            { name: "Practice", status: "free-access" },
-            { name: "Mid-term", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
-            { name: "Final", status: "scheduled", startTime: "2024-03-20T09:00:00", endTime: "2024-03-20T12:00:00" },
-            // Thêm các kỳ thi khác nếu cần
-        ];
+    <div class="overlay"></div>
 
-        // Hiển thị danh sách các kỳ thi
-        function displayExams(examsToShow) {
-            const examList = document.getElementById("exam-list");
-            examList.innerHTML = "";
-            examsToShow.forEach(exam => {
-                const listItem = document.createElement("li");
-                let examLink = document.createElement("a");
-                examLink.textContent = exam.name + " - " + exam.status;
-                if (exam.name === 'Practice') {
-                    examLink.href = "quiz02.html?exam=Practice";
-                } else {
-                    examLink.href = "#";
-                    examLink.onclick = function (e) {
-                        e.preventDefault();
-                        if (examDate(exam.startTime, exam.endTime)) {
-                            window.location.href = "quiz02.html?exam=" + exam.name;
-                        } else {
-                            window.location.href = "https://www.facebook.com/vuhoang.le.338"
-                        }
-                    }
-                }
-                listItem.appendChild(examLink);
-                examList.appendChild(listItem);
-            });
-        }
-
-        function examDate(startTime, endTime) {
-            const now = new Date();
-            const start = new Date(startTime);
-            const end = new Date(endTime);
-            return now >= start && now <= end;
-        }
-
-        // Lọc danh sách kỳ thi theo trạng thái
-        function filterExams(status) {
-            const filteredExams = (status === "all") ? exams : exams.filter(exam => exam.status === status);
-            displayExams(filteredExams);
-        }
-
-        // Tìm kiếm kỳ thi theo tên
-        function searchExams(keyword) {
-            const filteredExams = exams.filter(exam => exam.name.toLowerCase().includes(keyword.toLowerCase()));
-            displayExams(filteredExams);
-        }
-
-        // Sự kiện khi trang được tải
-        document.addEventListener("DOMContentLoaded", () => {
-            displayExams(exams); // Hiển thị danh sách kỳ thi khi trang được tải
-
-            // Lắng nghe sự kiện lọc
-            const statusFilter = document.getElementById("status-filter");
-            statusFilter.addEventListener("change", () => {
-                const selectedStatus = statusFilter.value;
-                filterExams(selectedStatus);
-            });
-
-            // Lắng nghe sự kiện tìm kiếm
-            const searchInput = document.getElementById("search");
-            searchInput.addEventListener("input", () => {
-                const keyword = searchInput.value;
-                searchExams(keyword);
-            });
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-            const userName = localStorage.getItem('userName');
-            if (userName) {
-                const welcomeHeading = document.querySelector('#header h1');
-                welcomeHeading.textContent += ` ${userName}`;
-            }
-        })
-        window.onload = function () {
-            const userName = localStorage.getItem('userName');
-            if (userName) {
-                document.getElementById('userNameDisplay').textContent = `Welcome, ${userName}`;
-            } else {
-                document.getElementById('userNameDisplay').textContent = `Welcome`;
-            }
-        }
-    </script>
-
+    <!-- SCRIPT -->
+    <!-- APEX CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- APP JS -->
+    <script src="/admin/app.js"></script>
 
 </body>
 
