@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results Page</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/stopwatch.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/check-o.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/media-live.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/time.css' rel='stylesheet'>
+	<link href='https://unpkg.com/css.gg@2.0.0/icons/css/attribution.css' rel='stylesheet'>
+	<style type="text/css">
+		body {
+		    font-family: Arial, sans-serif;
+		    font-size: 16px;
+		    background-color: aliceblue;
+		}
+
+		.container {
+			position: relative;
+		}
+		
+		.content {
+			width: 65%;
+			position: absolute;
+			right: 0;
+		}
+
+		.questions {
+			display: table-row;
+		}
+
+		.box {
+		  display: table;
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		  position: fixed;
+		  top: 400px;
+		  left: 150px;
+
+		}
+
+		.cell {
+		  display: table-cell;
+		  padding: 2px;
+		  width: 30px;
+		  height: 30px;
+		  text-align: center;
+		  vertical-align: middle;
+		  text-decoration: none;
+		  color: black;
+		  background: #ddd;
+		}
+
+		table {
+			background-color: white;
+		  border-collapse: collapse;
+/*		  width: 35%;*/
+		  position: fixed;
+		 	top: 80px;
+		  	left: 50px;
+
+		}
+
+		th, td {
+		  border: 1px solid black;
+		  padding: 8px;
+		  text-align: left;
+		}
+		th {
+		  border-top: none;
+		  border-bottom: none;
+		}
+
+		td {
+		  border-left: none;
+		  border-right: none;
+		}
+
+		#question1 {
+            top: 0px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question2 {
+            top: 300px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question3 {
+            top: 600px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question4 {
+            top: 900px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question5 {
+            top: 1200px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question6 {
+            top: 1500px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question7 {
+            top: 1800px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question8 {
+            top: 2100px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+		#question9 {
+            top: 2400px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .kq label:not(:first-child) {
+            border-top: 1px solid #e0e0e0;
+        }
+
+         label {
+            padding: 10px 0;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+		    display: inline-block;
+		    border-radius: 50%;
+		    width: 25px;
+		    height: 25px;
+		    line-height: 25px;
+		    text-align: center;
+		    font-size: 16px;
+		    background-color: #ddd;
+		    color: white;
+		  }
+
+		  .correct {
+		    background-color: green; /* Màu nền xanh cho đáp án đúng */
+		    color: white; /* Màu chữ trắng */
+		  }
+
+		  .incorrect {
+		    background-color: red; /* Màu nền đỏ cho đáp án sai */
+		    color: white; /* Màu chữ trắng */
+		  }
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+		<h2 style="position: fixed; left: 150px;">Test Statistics</h2>
+		<table border="1">
+		  <tr>
+		  	<td>
+		  		<i class="gg-stopwatch" style="color: skyblue;"></i>		  	
+		  	</td>
+		    <td style="width: 180px;">
+			    Testing Time
+			</td>
+		    <td style="text-align: right; width: 100px;">10 minutes</td>
+		  </tr>
+		  <tr>
+		  	<td>
+		  		<i class="gg-check-o" style="color: skyblue;"></i>
+		  	</td>
+		    <td>
+		    	Correct Answers</td>
+		    <td style="text-align: right;">6</td>
+		  </tr>
+		  <tr>
+		  	<td>
+		  		<i class="gg-close-o" style="color: skyblue;"></i>
+		  	</td>
+		    <td>
+		    	Incorrect Answers
+		    </td>
+		    <td style="text-align: right;">3</td>
+		  </tr>
+		  <tr>
+		  	<td>
+		  		<i class="gg-info" style="color: skyblue;"></i>
+		  	</td>
+		    <td>
+		    	Number of Questions
+		    </td>
+		    <td style="text-align: right;">9</td>
+		  </tr>
+		  <tr>
+		  	<td>
+		  		<i class="gg-media-live" style="color: skyblue;"></i>
+		  	</td>
+		    <td>
+		    	Accuracy
+		    </td>
+		    <td style="text-align: right;">66.67%</td>
+		  </tr>
+		  <tr>
+		  	<td><i class="gg-time" style="color: skyblue;"></i></td>
+		    <td>
+			    Average Time
+			</td>
+		    <td style="text-align: right;">1 minute</td>
+		  </tr>
+		  <tr>
+		  	<td><i class="gg-attribution" style="color: skyblue;"></i></td>
+		    <td>
+		    	Speed
+		    </td>
+		    <td style="text-align: right;">0.9 qus/min</td>
+		  </tr>
+		</table>
+		<div class="box">
+			<div class="questions">
+				<a href="#question1" class="cell" style="border: 1px green solid; color: green;">1</a>
+				<a href="#question2" class="cell" style="border: 1px red solid; color: red;">2</a>
+				<a href="#question3" class="cell" style="border: 1px green solid; color: green;">3</a>
+			</div>
+			<div class="questions">
+				<a href="#question4" class="cell" style="border: 1px green solid; color: green;">4</a>
+				<a href="#question5" class="cell" style="border: 1px green solid; color: green;">5</a>
+				<a href="#question6" class="cell" style="border: 1px red solid; color: red;">6</a>
+			</div>
+			<div class="questions">
+				<a href="#question7" class="cell" style="border: 1px red solid; color: red;">7</a>
+				<a href="#question8" class="cell" style="border: 1px green solid; color: green;">8</a>
+				<a href="#question9" class="cell" style="border: 1px green solid; color: green;">9</a>
+			</div>
+		</div>
+		<div class="content">
+			<div id="question1">
+				<h2>1. What is the capital of France?</h2>
+                <div class="kq">
+                    <label style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">A</div>
+                        Paris
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Madrid
+                    </label>
+                    <label>
+                        <div class="answer">C</div>
+                        London
+                    </label>
+                    <label>
+                        <div class="answer">D</div>
+                        Rome
+                    </label>
+                </div>
+			</div>
+			<div id="question2">
+				<h2>2. What is the largest planet in our solar system?</h2>
+				<div class="kq">
+                    <label style="border-left: 2px red solid; padding-left: 10px;">
+                        <div class="answer incorrect">A</div>
+                        Venus
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Mars
+                    </label>
+                    <label style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">C</div>
+                        Jupiter
+                    </label>
+                    <label>
+                        <div class="answer">D</div>
+                        Saturn
+                    </label>
+                </div>
+			</div>
+			<div id="question3">
+				<h2>3. What is the capital city of England?</h2>
+				<div class="kq">
+                    <label style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">A</div>
+                        London
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Paris
+                    </label>
+                    <label>
+                        <div class="answer">C</div>
+                        Hanoi
+                    </label>
+                    <label>
+                        <div class="answer">D</div>
+                        Tokyo
+                    </label>
+                </div>
+			</div>
+			<div id="question4">
+				<h2>4. What is the largest ocean on Earth?</h2>
+				<div class="kq">
+                    <label style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">A</div>
+                        Pacific Ocean
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Atlantic Ocean
+                    </label>
+                    <label>
+                        <div class="answer">C</div>
+                        Indian Ocean
+                    </label>
+                    <label>
+                        <div class="answer">D</div>
+                        Arctic Ocean
+                    </label>
+                </div>
+			</div>
+			<div id="question5">
+				<h2>5. Who wrote "Romeo and Juliet"?</h2>
+				<div class="kq">
+                    <label style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">A</div>
+                        William Shakespeare
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Jane Austen
+                    </label>
+                    <label>
+                        <div class="answer">C</div>
+                        Charles Dickens
+                    </label>
+                    <label>
+                        <div class="answer">D</div>
+                        Mark Twain
+                    </label>
+                </div>
+			</div>
+			<div id="question6">
+				<h2>6. What is the largest desert in the world?</h2>
+				<div class="kq">
+                    <label style="border-left: 2px red solid; padding-left: 10px;">
+                        <div class="answer incorrect">A</div>
+                        Sahara Desert
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Arabian Desert
+                    </label>
+                    <label>
+                        <div class="answer">C</div>
+                        Gobi Desert
+                    </label>
+                    <label style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">D</div>
+                        Antarctic Desert
+                    </label>
+                </div>
+			</div>
+			<div id="question7">
+				<h2>7. What is the longest river in the world??</h2>
+				<div class="kq">
+                    <label style="border-left: 2px red solid; padding-left: 10px;">
+                        <div class="answer incorrect">A</div>
+                        Nile River
+                    </label>
+                    <label  style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">B</div>
+                        Amazon River
+                    </label>
+                    <label>
+                        <div class="answer">C</div>
+                        Yangtze River
+                    </label>
+                    <label>
+                        <div class="answer">D</div>
+                        Mississippi River
+                    </label>
+                </div>
+			</div>
+			<div id="question8">
+				<h2>8. What is the tallest mountain in the world?</h2>
+				<div class="kq">
+                    <label>
+                        <div class="answer">A</div>
+                        K2
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Mount Kilimanjaro
+                    </label>
+                    <label style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">C</div>
+                        Mount Everest
+                    </label>
+                    <label>
+                        <div class="answer">D</div>
+                        Mount Fuji
+                    </label>
+                </div>
+			</div>
+			<div id="question9">
+				<h2>9. What is the chemical symbol for gold?</h2>
+				<div class="kq">
+                    <label>
+                        <div class="answer">A</div>
+                        Ag
+                    </label>
+                    <label>
+                        <div class="answer">B</div>
+                        Pb
+                    </label>
+                    <label>
+                        <div class="answer">C</div>
+                        Fe
+                    </label>
+                    <label  style="border-left: 2px green solid; padding-left: 10px;">
+                        <div class="answer correct">D</div>
+                        Au
+                    </label>
+                </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		const links = document.querySelectorAll('.questions a');
+
+links.forEach(link => {
+	link.addEventListener('click', event => {
+		event.preventDefault();
+		const targetId = link.getAttribute('href');
+		const targetElement = document.querySelector(targetId);
+		targetElement.scrollIntoView({ behavior: 'smooth' });
+	});
+});
+	</script>
+</body>
+</html>
