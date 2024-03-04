@@ -143,6 +143,58 @@
             width: 104.5%;
             margin-top: 20px;
         }
+
+        .modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+        .detailed {
+    display: block; /* Or inline-block, depending on your design */
+    margin-top: 20px; /* Adjust as needed */
+    text-align: center;
+    background-color: #007bff; /* Example background color */
+    color: white; /* Example text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.detailed:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
     </style>
 </head>
 
@@ -252,8 +304,16 @@
                 <button type="submit" class="submit-btn">Submit</button>
                 <div class="result" id="result"></div>
             </form>
-
         </div>
+<div id="resultModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h4>Test Result</h4>
+        <p id="modalResultText">Your score is...</p>
+
+        <a href="resultpage.html" class="detailed">Detailed Results</a>
+    </div>
+</div>
+
     </div>
 
     <script type="text/javascript">
@@ -291,7 +351,10 @@
                     score += 1;
                 }
             });
-            resultDiv.innerHTML = `Your score is ${score}/${correctAnswers.length}`;
+            document.getElementById('modalResultText').innerHTML = `Your score is ${score}/${correctAnswers.length}`;
+            document.getElementById('resultModal').style.display = 'block';
+            window.scrollTo(0,0);
+            // resultDiv.innerHTML = `Your score is ${score}/${correctAnswers.length}`;
             // Xử lý khi nộp bài
         }
 
