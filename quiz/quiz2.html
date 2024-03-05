@@ -79,6 +79,51 @@
             padding: 20px;
         }
 
+        .question5 {
+            position: absolute;
+            top: 1200px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .question6 {
+            position: absolute;
+            top: 1500px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .question7 {
+            position: absolute;
+            top: 1800px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .question8 {
+            position: absolute;
+            top: 2100px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .question9 {
+            position: absolute;
+            top: 2400px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+        }
+
         .question:nth-child(3n) {
             margin-right: 5%;
         }
@@ -103,7 +148,7 @@
 
         .submit-btn {
             position: absolute;
-            top: 1400px;
+            top: 2900px;
             left: 50%;
             transform: translateX(-50%);
             display: block;
@@ -122,7 +167,7 @@
             left: 50%;
             /* Đặt left ở 50% */
             transform: translateX(-50%);
-            top: 1450px;
+            top: 2950px;
             font-weight: bold;
             font-size: 22px;
             margin-top: 20px;
@@ -246,7 +291,116 @@
                                 Arctic Ocean
                             </label>
                         </div>
+                    </div>
 
+                    <div class="question5">
+                        <p>5. Who wrote "Romeo and Juliet"?</p>
+                        <div class="answers">
+                            <label>
+                                <input type="radio" name="q5" value="a">
+                                William Shakespeare
+                            </label>
+                            <label>
+                                <input type="radio" name="q5" value="b">
+                                Jane Austen
+                            </label>
+                            <label>
+                                <input type="radio" name="q5" value="c">
+                                Charles Dickens
+                            </label>
+                            <label>
+                                <input type="radio" name="q5" value="d">
+                                Mark Twain
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question6">
+                        <p>6. What is the largest desert in the world?</p>
+                        <div class="answers">
+                            <label>
+                                <input type="radio" name="q6" value="a">
+                                Sahara Desert
+                            </label>
+                            <label>
+                                <input type="radio" name="q6" value="b">
+                                Arabian Desert
+                            </label>
+                            <label>
+                                <input type="radio" name="q6" value="c">
+                                Gobi Desert
+                            </label>
+                            <label>
+                                <input type="radio" name="q6" value="d">
+                                Antarctic Desert
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question7">
+                        <p>7. What is the longest river in the world??</p>
+                        <div class="answers">
+                            <label>
+                                <input type="radio" name="q7" value="a">
+                                Nile River
+                            </label>
+                            <label>
+                                <input type="radio" name="q7" value="b">
+                                Amazon River
+                            </label>
+                            <label>
+                                <input type="radio" name="q7" value="c">
+                                Yangtze River
+                            </label>
+                            <label>
+                                <input type="radio" name="q7" value="d">
+                                Mississippi River
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question8">
+                        <p>What is the tallest mountain in the world?</p>
+                        <div class="answers">
+                            <label>
+                                <input type="radio" name="q8" value="a">
+                                K2
+                            </label>
+                            <label>
+                                <input type="radio" name="q8" value="b">
+                                Mount Kilimanjaro
+                            </label>
+                            <label>
+                                <input type="radio" name="q8" value="c">
+                                Mount Everest
+                            </label>
+                            <label>
+                                <input type="radio" name="q8" value="d">
+                                Mount Fuji
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question9">
+                        <p>What is the chemical symbol for gold?</p>
+                        <div class="answers">
+                            <label>
+                                <input type="radio" name="q9" value="a">
+                                Ag
+                            </label>
+                            <label>
+                                <input type="radio" name="q9" value="b">
+                                Pb
+                            </label>
+                            <label>
+                                <input type="radio" name="q9" value="c">
+                                Fe
+                            </label>
+                            <label>
+                                <input type="radio" name="q9" value="d">
+                                Au
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="submit-btn">Submit</button>
@@ -259,7 +413,7 @@
     <script type="text/javascript">
         const quizForm = document.getElementById('quiz-form');
         const resultDiv = document.getElementById('result');
-        const correctAnswers = ['a', 'c', 'a', 'a'];
+        const correctAnswers = ['a', 'c', 'a', 'a', 'a', 'd', 'b', 'c', 'd'];
         const timerDiv = document.getElementById('timer');
         let timeLeft = 300; // 5 minutes in seconds
 
@@ -285,7 +439,7 @@
         function handleSubmit(e) {
             e.preventDefault();
             let score = 0;
-            const userAnswers = [quizForm.q1.value, quizForm.q2.value, quizForm.q3.value, quizForm.q4.value];
+            const userAnswers = [quizForm.q1.value, quizForm.q2.value, quizForm.q3.value, quizForm.q4.value, quizForm.q5.value, quizForm.q6.value, quizForm.q7.value, quizForm.q8.value, quizForm.q9.value];
             userAnswers.forEach((answer, index) => {
                 if (answer === correctAnswers[index]) {
                     score += 1;
@@ -302,7 +456,7 @@
             e.preventDefault();
 
             let score = 0;
-            const userAnswers = [quizForm.q1.value, quizForm.q2.value, quizForm.q3.value, quizForm.q4.value];
+            const userAnswers = [quizForm.q1.value, quizForm.q2.value, quizForm.q3.value, quizForm.q4.value, quizForm.q5.value, quizForm.q6.value, quizForm.q7.value, quizForm.q8.value, quizForm.q9.value];
             userAnswers.forEach((answer, index) => {
                 if (answer === correctAnswers[index]) {
                     score += 1;
