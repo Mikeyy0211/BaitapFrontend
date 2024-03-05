@@ -111,43 +111,53 @@
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>
-<!-- MAIN CONTENT -->
-<div class="main-content">
-    <div class="content-wrapper">
-        <div class="form-container">
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="content-header">
             <h2>Create/Edit Exam</h2>
+        </div>
+        <div class="content-body">
+            <!-- Exam form -->
             <form id="exam-form">
-                <div class="form-group">
-                    <label for="exam-name">Exam Name:</label>
-                    <input type="text" id="exam-name" name="exam-name" required>
+                <!-- Exam information fields -->
+                <label for="exam-name">Exam Name:</label>
+                <input type="text" id="exam-name" name="exam-name" required>
+
+                <label for="exam-description">Description:</label>
+                <textarea id="exam-description" name="exam-description" rows="4" required></textarea>
+
+                <label for="exam-type">Exam Type:</label>
+                <select id="exam-type" name="exam-type" required>
+                    <option value="free">Free</option>
+                    <option value="timed">Timed</option>
+                </select>
+
+                <!-- Question management section -->
+                <div class="question-management">
+                    <h3>Question Management</h3>
+                    <!-- Add question button -->
+                    <button type="button" id="add-question-btn">Add Question</button>
+
+                    <!-- Question list -->
+                    <ul id="question-list">
+                        <!-- Dynamic list of questions will be added here -->
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label for="exam-description">Description:</label>
-                    <textarea id="exam-description" name="exam-description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exam-type">Exam Type:</label>
-                    <select id="exam-type" name="exam-type">
-                        <option value="open">Open</option>
-                        <option value="timed">Timed</option>
-                    </select>
-                </div>
-                <div class="questions-container">
-                    <label>Questions:</label>
-                    <div id="questions-list"></div>
-                    <button type="button" onclick="addQuestion()">Add Question</button>
-                </div>
-                <div class="form-group">
-                    <label for="import-excel">Import Questions:</label>
-                    <input type="file" id="import-excel" name="import-excel" accept=".xlsx, .xls">
-                </div>
-                <button type="submit">Submit Exam</button>
+
+                <!-- File input for exam from Excel -->
+                <label for="excel-file">Import Exam from Excel:</label>
+                <input type="file" id="excel-file" name="excel-file" accept=".xls, .xlsx">
+
+                <!-- Submit button -->
+                <button type="button" onclick="saveExam()">Save Exam</button>
             </form>
         </div>
     </div>
-</div>
-<!-- END MAIN CONTENT -->
-   
+    <!-- END MAIN CONTENT -->
+
+    <div class="overlay"></div>
+
 
       
               
