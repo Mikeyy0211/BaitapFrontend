@@ -36,7 +36,7 @@ function displayExams(examsToShow) {
                 if (examDate(exam.startTime, exam.endTime)) {
                     window.location.href = "quiz02.html?exam=" + exam.name;
                 } else {
-                    window.location.href = "https://www.facebook.com/vuhoang.le.338"
+                    alert('Please wait for this exam');
                 }
             }
         }
