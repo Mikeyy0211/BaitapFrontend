@@ -24,6 +24,7 @@
                 <input type="text" id="signup-name" placeholder="Name" required>
                 <input type="email" id="signup-email" placeholder="Email" required>
                 <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="password" id="repeat-password" placeholder="Confirm Password" required>
                 <button type="submit">Sign Up</button>
             </form>
         </div>
@@ -63,7 +64,7 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
+        import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -80,23 +81,33 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
         //sign-up method
         document.getElementById('sign-up form').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('signup-email').value;
             const password = document.getElementById('signup-password').value;
             const name = document.getElementById('signup-name').value;
-
+            const repeatPassword = document.getElementById('repeat-password').value;
+            if (password !== repeatPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+            let lastID = parseInt(localStorage.getItem('lastStudentID')) || 0;
+            lastID ++;
+            const studentID = `B21DCCN${String(lastID).padStart(3,'0')}`;
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Signed up
                     var user = userCredential.user;
                     updateProfile(auth.currentUser, {
-                        displayName: name
+                        displayName: name,
+                        student: studentID,
                     })
                         .then(() => {
                             localStorage.setItem('userName', name);
-                            window.location.replace('./index.html')
+                            localStorage.setItem('studentID', studentID);
+                            localStorage.setItem('lastStudentID', lastID.toString());
+                            window.location.replace('./index.html');
                         })
                 })
                 .catch((error) => {
@@ -110,20 +121,20 @@
             e.preventDefault();
             const email = document.getElementById('signin-email').value;
             const password = document.getElementById('signin-password').value;
-            if(email === 'admin@admin.com' && password === 'admin'){
+            if (email === 'admin@admin.com' && password === 'admin') {
                 localStorage.setItem('userName', 'admin');
                 window.location.assign('../admin/adminDashboard.html');
-            }else{
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    const name = user.displayName;
-                    localStorage.setItem('userName', name);
-                    window.location.assign('../mainScreen/mainScreen.html');
-                })
-                .catch((error) => {
-                    alert("Your email or password is incorrect. Please try again !");
-                });
+            } else {
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        const name = user.displayName;
+                        localStorage.setItem('userName', name);
+                        window.location.assign('../mainScreen/mainScreen.html');
+                    })
+                    .catch((error) => {
+                        alert("Your email or password is incorrect. Please try again !");
+                    });
             }
         });
     </script>

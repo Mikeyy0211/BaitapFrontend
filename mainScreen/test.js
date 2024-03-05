@@ -91,9 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 window.onload = function () {
     const user = localStorage.getItem('userName');
-    const userName = user.toUpperCase();
-    if (userName) {
-        document.getElementById('userNameDisplay').textContent = `Welcome, ${userName}`;
+    let userName;
+    if (user) {
+        const userNameParts = user.split(' ').map(part => part.charAt(0).toUpperCase() + part.slice(1));
+        userName = userNameParts.join(' '); 
+    }
+
+    const studentID = localStorage.getItem('studentID').toUpperCase();
+    if (userName && studentID) {
+        document.getElementById('userNameDisplay').textContent = `Welcome, ${userName} - ${studentID}`;
     } else {
         document.getElementById('userNameDisplay').textContent = `Welcome`;
     }
