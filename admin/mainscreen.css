@@ -164,4 +164,21 @@ html {
     color: #000000;
 }
 
+.content-body {
+    padding: 20px;
+}
+
+.question-management {
+    margin-top: 20px;
+}
+
+#question-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.question-item {
+    margin-bottom: 10px;
+}
+
 #footer {}
