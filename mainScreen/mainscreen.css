@@ -47,15 +47,16 @@ html {
     font-weight: bolder;
 }
 
-#logout{
+#logout {
     float: right;
     padding: 0 20px;
     cursor: pointer;
     position: fixed;
     top: 10px;
     right: 0;
-    
+
 }
+
 #ic-lo {
     position: fixed;
     top: 14px;
@@ -118,5 +119,32 @@ html {
     text-decoration: none;
     color: #000000;
 }
+
+/* exams.css */
+
+table {
+    width: 200%; 
+    border-collapse: collapse; 
+    text-align: center; 
+    margin: auto; 
+}
+
+th, td {
+    border: 100px solid black; 
+    padding: 8px; 
+}
+
+thead {
+    background-color: #CCCCCC; 
+}
+
+.white-background {
+    background-color: #FFFFFF; 
+}
+
+.gray-background {
+    background-color: #F0F0F0; 
+}
+
 
 #footer {}

@@ -9,9 +9,15 @@
         Admin
     </title>
     <style>
-
+        .main-content{
+            margin-left: 350px;
+            padding: 20px;
+        }
         .content-header h2 {
             margin-top: 0;
+            text-align: center;
+            font-size: 40px;
+            color: #bb2019;
         }
 
         .btn {
@@ -29,6 +35,7 @@
 
         .question-management {
             margin-top: 20px;
+            text-align: center;
         }
 
         label {
@@ -101,7 +108,7 @@
         <!-- SIDEBAR MENU -->
         <ul class="sidebar-menu">
             <li>
-                <a href="#" class="active">
+                <a href="../admin/adminDashboard.html" class="active">
                     <i class='bx bx-home'></i>
                     <span>dashboard</span>
                 </a>
@@ -170,7 +177,7 @@
     <!-- END SIDEBAR -->
 
     <!-- MAIN CONTENT -->
-    <div class="main">
+    <div class="main-content">
         <div class="content-header">
             <h2>Create/Edit Exam</h2>
         </div>
@@ -186,14 +193,14 @@
 
                 <label for="exam-type">Exam Type:</label>
                 <select id="exam-type" name="exam-type" required>
-                    <option value="free">Free</option>
-                    <option value="timed">Timed</option>
+                    <option value="free">Free-access</option>
+                    <option value="timed">Scheduled</option>
                 </select>
 
                 <!-- Question management section -->
                 <div class="question-management">
-                    <h3>Question Management</h3>
-                    <button type="button" id="add-question-btn">Add Question</button>
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">Question Management</h3>
+                    <button type="button" id="add-question-btn" onclick="input_question()">Add Question</button>
 
                     <ul id="question-list">
                         <!-- Dynamic list of questions will be added here -->
@@ -205,7 +212,8 @@
                 <input type="file" id="excel-file" name="excel-file" accept=".xls, .xlsx">
 
                 <!-- Submit button -->
-                <button type="button" onclick="saveExam()">Save Exam</button>
+                <br>
+                <button type="button" onclick="saveExam()" style="margin-bottom: 10px;">Save Exam</button>
             </form>
         </div>
     </div>
@@ -225,7 +233,130 @@
     <!-- APEX CHART -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- APP JS -->
-    <script src="/admin/app.js"></script>
+    <script>
+        function input_question() {
+            // Tạo form cho việc nhập thông tin câu hỏi
+            var questionForm = document.createElement("form");
+            questionForm.setAttribute("id", "question-form");
+
+            // Tạo các trường input cho đề bài và các đáp án
+            var questionInput = document.createElement("input");
+            questionInput.setAttribute("type", "text");
+            questionInput.setAttribute("placeholder", "Question");
+            questionInput.setAttribute("name", "question");
+
+            var answerAInput = document.createElement("input");
+            answerAInput.setAttribute("type", "text");
+            answerAInput.setAttribute("placeholder", "Answer A");
+            answerAInput.setAttribute("name", "answerA");
+
+            var answerBInput = document.createElement("input");
+            answerBInput.setAttribute("type", "text");
+            answerBInput.setAttribute("placeholder", "Answer B");
+            answerBInput.setAttribute("name", "answerB");
+
+            var answerCInput = document.createElement("input");
+            answerCInput.setAttribute("type", "text");
+            answerCInput.setAttribute("placeholder", "Answer C");
+            answerCInput.setAttribute("name", "answerC");
+
+            var answerDInput = document.createElement("input");
+            answerDInput.setAttribute("type", "text");
+            answerDInput.setAttribute("placeholder", "Answer D");
+            answerDInput.setAttribute("name", "answerD");
+
+            // Tạo nút để thêm câu hỏi
+            var addButton = document.createElement("button");
+            addButton.setAttribute("type", "button");
+            addButton.textContent = "Add Question";
+            addButton.addEventListener("click", function () {
+                // Lấy giá trị từ các trường input
+                var question = questionInput.value;
+                var answerA = answerAInput.value;
+                var answerB = answerBInput.value;
+                var answerC = answerCInput.value;
+                var answerD = answerDInput.value;
+
+                // Kiểm tra xem các trường có trống không
+                if (question.trim() === "" || answerA.trim() === "" || answerB.trim() === "" || answerC.trim() === "" || answerD.trim() === "") {
+                    alert("Please fill in all fields");
+                    return;
+                }
+
+                // Tạo một đối tượng question để lưu thông tin câu hỏi
+                var questionObject = {
+                    question: question,
+                    answers: [answerA, answerB, answerC, answerD]
+                };
+
+                // Thêm câu hỏi vào danh sách
+                addQuestionToList(questionObject);
+
+                // Xóa các giá trị nhập trong form
+                questionInput.value = "";
+                answerAInput.value = "";
+                answerBInput.value = "";
+                answerCInput.value = "";
+                answerDInput.value = "";
+            });
+
+            // Thêm các trường input và nút vào form
+            questionForm.appendChild(questionInput);
+            questionForm.appendChild(answerAInput);
+            questionForm.appendChild(answerBInput);
+            questionForm.appendChild(answerCInput);
+            questionForm.appendChild(answerDInput);
+            questionForm.appendChild(addButton);
+
+            // Thêm form vào div content-body
+            var contentBody = document.querySelector(".content-body");
+            contentBody.appendChild(questionForm);
+        }
+
+        function addQuestionToList(questionObject) {
+            // Tạo một mục list item để hiển thị câu hỏi và các đáp án
+            var questionItem = document.createElement("li");
+
+            // Hiển thị nội dung của câu hỏi
+            var questionText = document.createElement("div");
+            questionText.textContent = questionObject.question;
+            questionItem.appendChild(questionText);
+
+            // Hiển thị các đáp án A, B, C, D
+            var answersList = document.createElement("ul");
+            questionObject.answers.forEach(function (answer, index) {
+                var answerItem = document.createElement("li");
+                var answerText = document.createElement("span");
+                answerText.textContent = "Answer " + String.fromCharCode(65 + index) + ": " + answer;
+                answerItem.appendChild(answerText);
+                answersList.appendChild(answerItem);
+            });
+            questionItem.appendChild(answersList);
+
+            // Thêm câu hỏi vào danh sách
+            var questionList = document.getElementById("question-list");
+            questionList.appendChild(questionItem);
+        }
+        function saveExam() {
+            // Kiểm tra xem danh sách câu hỏi có rỗng không
+            var questionList = document.getElementById("question-list");
+            if (questionList.children.length === 0) {
+                alert("Please add at least one question.");
+                return;
+            }
+
+            // Lưu câu hỏi thành công
+            alert("Questions saved successfully.");
+
+            // Reset dữ liệu
+            var examForm = document.getElementById("exam-form");
+            examForm.reset();
+
+            // Xóa danh sách câu hỏi
+            questionList.innerHTML = "";
+        }
+    </script>
+    <script src="../admin/app.js"></script>
 
 </body>
 
